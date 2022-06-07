@@ -9,4 +9,4 @@ function solution(A) {
 }
 
 let result = solution([1, 3, 6, 4, 1, 2]);
-result;
+
