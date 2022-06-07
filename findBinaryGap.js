@@ -14,4 +14,3 @@ function solution(N) {
 }
 
 let result = solution(101);
-result;
