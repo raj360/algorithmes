@@ -1,6 +1,6 @@
 function solution(A) {
-  let sorted = A.sort();
-  for (let i = 1; i <= sorted.length + 1; i++) {
+  //   let sorted = A.sort();
+  for (let i = 1; i <= A.length + 1; i++) {
     if (!sorted.includes(i)) {
       return i;
       break;
