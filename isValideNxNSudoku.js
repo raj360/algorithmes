@@ -1,64 +1,53 @@
-/*
-checking if a sudoku is solvable
- */
-const sudoku2 = (grid) => {
-  //chain of responsibility pattern
-  const chain = [
-    (grid) => {
-      //loop through all rows
-      for (let i = 0; i < grid.length; i++) {
-        if (isValid(grid[i])) {
-          return false;
-        }
-      }
-      return true;
-    },
-    (grid) => {
-      //loop through all columns
-      for (let i = 0; i < grid.length; i++) {
-        let start = 0;
-        let column = [];
-        for (let j = 0; j < grid.length; j++) {
-          column[start++] = grid[j][i];
-        }
-        if (isValid(column)) {
-          return false;
-        }
-      }
-      return true;
-    },
-    (grid) => {
-      //looping through all the 3x3 cubes
-      for (let i = 0; i < grid.length; i++) {
-        for (let j = 0; j < grid.length; j++) {
-          let start = 0;
-          let cubeNxN = [];
-          for (let row = i * grid.length; row < i * grid.length + grid.length; row++) {
-            for (let column = j * grid.length; column < j * grid.length + grid.length; column++) {
-              cubeNxN[start++] = grid[row][column];
+let Sudoku = function (data) {
+  //   Public methods
+  return {
+    isValid: function () {
+      const chain = [
+        (data) => {
+          //loop through all rows
+          for (let i = 0; i < data.length; i++) {
+            return validateDimensions(data[i]);
+          }
+          return true;
+        },
+          (data) => {
+            //loop through all columns
+            for (let i = 0; i < data.length; i++) {
+              let start = 0;
+              let column = [];
+              for (let j = 0; j < data.length; j++) {
+                column[start++] = data[j][i];
+              }
+              return validateDimensions(column);
             }
-          }
-
-          if (isValid(cubeNxN)) {
             return true;
-          }
-        }
-      }
-      return true;
-    },
-  ];
-  //checking for duplicate values is general is not required in the chain
-  let isValid = (cubeNxN) => {
-    console.log({ size: cubeNxN.length, cube: cubeNxN });
-    let test1 = Number.isInteger(Math.sqrt(cubeNxN.length));
-    let test2 = console.log(test1);
-    console.log(!test2);
-    return test2;
-  };
+          };,
+          (data) => {
+            //looping through all the NXN Matrix
+            for (let i = 0; i < data.length; i++) {
+              for (let j = 0; j < data.length; j++) {
+                let start = 0;
+                let cubeNxN = [];
+                for (let row = i * data.length; row < i * data.length + data.length; row++) {
+                  for (let column = j * data.length; column < j * data.length + data.length; column++) {
+                    cubeNxN[start++] = data[row][column];
+                  }
+                }
+                //if we get here, the the matric is all good.
+                return true;
+              }
+            }
+            return true;
+          };,
+      ];
 
-  let result = chain.every((func) => func(grid));
-  result;
-  return result;
+      //check is the cube dimensions are square all equal
+      let validateDimensions = (cubeNxN) =>
+        new Set(cubeNxN).size === cubeNxN.length && Number.isInteger(Math.sqrt(cubeNxN.length));
+
+      return chain.every((func) => func(data));
+    },
+  };
 };
 
 let badSudoku1 = [
@@ -101,5 +90,5 @@ let goodSudoku2 = [
   [2, 3, 1, 4],
 ];
 
-const result = sudoku2(badSudoku2);
+const result = Sudoku(goodSudoku1).isValid();
 result;
