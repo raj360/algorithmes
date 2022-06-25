@@ -31,3 +31,4 @@ var key = 'password';
 
 let c = new VigenèreCipher(key, alphabet);
 let output = c.decode('rovwsoiv');
+// GS-1724
