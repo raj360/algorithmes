@@ -1,3 +1,5 @@
+// processData(input);
+
 // Task
 // Given a string, , of length  that is indexed from  to , print its even-indexed and odd-indexed characters as  space-separated strings on a single line (see the Sample below for more detail).
 
@@ -5,27 +7,55 @@
 
 function processData(input) {
   //Enter your code here
+  let s = input.split('\n').filter((s) => s !== '');
   const length = input.length;
-  let even = '',
-    odd = '';
+  const output = {};
 
-    if(typeof input !== 'string') {
-        console.log(' ')
-    }
+  const result = s.reduce((accum, cur, index) => {
+    let even = '',
+      odd = '',
+      i = 0;
 
-  for (let i = 0; i < length; i++) {
-    if (i % 2 === 0) {
-      even += input[i];
+      //eliminate any numbers
+    if (parseInt(cur) > 0) {
+      return;
     } else {
-      odd += input[i];
+      for (let i = 0; i < cur.length; i++) {
+        if (i % 2 === 0) {
+          even += cur[i];
+        } else {
+          odd += cur[i];
+        }
+      }
+      //returnn output
+      output[index] = `${even} ${odd}`;
     }
-  }
+    return output;
+  }, {});
 
-  console.log(`${even} ${odd}`);
+  Object.values(result).forEach((value) => console.log(value));
 }
 
-const r = '2';
+const r = '21';
 const t = 'Rank';
 const s = 'Hacker';
-processData(d);
-console.log("Dog")
+const input = `
+2
+Hacker
+Rank
+`;
+
+const input2 = `
+10
+ovyvzvptyvpvpxyztlrztsrztztqvrxtxuxq
+holtm
+uvzxrumuztyqyvpnji
+tmruzxzuwoskqysxztuvosuyrswrnmtxvzsrqwytzrxpltrwusxupw
+wxstwxuzuyuvyzrsxysxyuvyqxuxyskqwsyqumqrvopvowqumnvrxpwqpwsrnvrztxrxpvuxunvyzvupvupowvyzvzuzwvsrwv
+yrzxrxskrtlpwpmtpxvowrxrpxq
+pryumtuntmovpwvowslj
+nosklrxrtyuxtmnurzsryuxtywqwqpxts
+fmpszyvqwxrtvpuwqszvyvotmsxsxuvzyvpwzrpmuxqwtswvytytzsnuxuyrpvtysqoutzurqxury
+jkmsxzwrxzy
+`;
+processData(input);
