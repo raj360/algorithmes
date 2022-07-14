@@ -26,24 +26,24 @@ function loop_size(node) {
   return count;
 }
 
-function loop_size(node) {
-  var nodes = [],
-    n = node;
+// function loop_size(node) {
+//   var nodes = [],
+//     n = node;
 
-  while (nodes.indexOf(n) === -1) {
-    nodes.push(n);
-    n = n.getNext();
-  }
+//   while (nodes.indexOf(n) === -1) {
+//     nodes.push(n);
+//     n = n.getNext();
+//   }
 
-  return nodes.length - nodes.indexOf(n);
-}
+//   return nodes.length - nodes.indexOf(n);
+// }
 
-const loop_size = (node) => {
-  let visited = [];
-  while (!visited.includes(node)) {
-    visited.push(node);
-    node = node.next;
-  }
-  let distance = visited.length - visited.indexOf(node);
-  return distance;
-};
+// const loop_size = (node) => {
+//   let visited = [];
+//   while (!visited.includes(node)) {
+//     visited.push(node);
+//     node = node.next;
+//   }
+//   let distance = visited.length - visited.indexOf(node);
+//   return distance;
+// };
