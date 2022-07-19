@@ -8,7 +8,6 @@ function towerBreakers(n, m) {
   }
 }
 
-
 console.log(6 % 2);
 
 const n = 2,
