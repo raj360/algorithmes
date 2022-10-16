@@ -1,5 +1,5 @@
-var re = /\d{3}/g;
-var str = '12345';
+const re = /\d{3}/g;
+ str = '123';
 var m,
   res = [];
 
@@ -9,5 +9,3 @@ while ((m = re.exec(str))) {
 }
 
 console.log(res); //[ '123', '234', '345' ]
-
-
