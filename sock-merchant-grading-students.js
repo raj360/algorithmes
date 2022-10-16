@@ -3,9 +3,9 @@
 
 //curr = 84
 //const reminder = curr%5
-//const diff = 5-test
+//const diff = 5-reminder
 //if(diff < 3) curr + reminder
- //else curr
+//else curr
 
  const makeRoundOff = (curr)=> {
     if(curr < 38) return curr
@@ -28,9 +28,9 @@ const grades = [73, 67, 38, 33]
 
 
 
-//arr = [1,2,1,2,1,3,2]  *
+//arr = [1,2,1,2,1,3,2] 
 // loop through the array  
-//group  (*)
+//group  (*) by count
 // count = [2222].length
 // if (count is odd)  numberOfPairs = (count -1) / 2
 // else 
