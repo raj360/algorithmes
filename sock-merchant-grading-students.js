@@ -54,3 +54,41 @@ const arr = [1, 2, 1, 2, 1, 3, 2]
 var result = sockMerchant(arr);
 
 result; 
+
+
+
+const steps = 8;
+const path = 'DDUUUUDD'; //dududu   uudd
+const steps2 = 6;
+const path2 = 'dududu';
+const steps3 = 4;
+const path3 = 'dduu';
+
+//D => down
+//U => up
+//if first unit is D track length of the (D)s if length equal to (U)s count a Valley remove those units
+//repeat process
+//if first unit is U track length of the (U)s if length equal to (D)s don't count a valley because its a mountain (remove those units)
+//repeat process
+
+const countingValleys = (steps, path) => {
+  let strArr = path.split('');
+  let count = 0;
+  let result = 0;
+
+  for (let step = 0; step < steps; step++) {
+    if (count == 0 && strArr[step].toLowerCase() == 'd') {
+      count -= 1;
+      result += 1;
+    } else if (strArr[step].toLowerCase() == 'd') {
+      count -= 0;
+    } else {
+      count += 1;
+    }
+  }
+
+  return result;
+};
+
+const result = countingValleys(steps2, path2);
+result;
