@@ -26,4 +26,7 @@ function closestNumbers(arr) {
 let arr = [5, -9, -5, 9, 10, 12, 13, 14];
 arr;
 const result = closestNumbers(arr);
+
 result;
+
+
