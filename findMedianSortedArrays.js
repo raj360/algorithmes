@@ -1,5 +1,5 @@
 const findMedianSortedArrays = function (nums1, nums2) {
-  const mergedArray = [...nums1, ...nums2];
+  const mergedArray = [...nums1, ...nums2].sort((a, b) => a - b);
 
   const len = mergedArray.length;
 
@@ -20,8 +20,8 @@ const findMedianSortedArrays = function (nums1, nums2) {
   }
 };
 
-const nums1 = [1, 2],
-  nums2 = [3, 4];
+const nums1 = [0, 0, 0, 0, 0],
+  nums2 = [-1, 0, 0, 0, 0, 0, 1];
 
 const result = findMedianSortedArrays(nums1, nums2);
 
