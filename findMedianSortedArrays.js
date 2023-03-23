@@ -13,7 +13,7 @@ const findMedianSortedArrays = function (nums1, nums2) {
 
     return median.toFixed(5);
   } else {
-    const index = Math.ceil(len / 2);
+    const index = Math.floor(len / 2);
     const median = mergedArray[index];
 
     return median.toFixed(5);
